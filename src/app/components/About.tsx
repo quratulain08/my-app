@@ -6,7 +6,7 @@ import { FaRocket, FaLightbulb, FaBullhorn, FaHandsHelping } from 'react-icons/f
 
 const About = () => {
   return (
-    <div id="about"> {/* Added id here */}
+    <div id="about"> 
       {/* Heading Section */}
       
       <h2 className='text-5xl font-bold leading-snug text-center' style={{ color: '#112d60' }}>About Us</h2>
@@ -14,7 +14,7 @@ const About = () => {
       
 
       {/* Main Content Section */}
-      <div className='px-4 my-8 lg:px-16 bg-gradient-to-t from-[#7defe0] to-[#b6c0c5] py-8'>
+      <div className='px-4 my-8 lg:px-16 bg-gradient-to-l from-[#7defe0] to-[#b6c0c5] py-8'>
         <h2 className='text-4xl font-bold leading-snug text-center' style={{ color: '#112d60' }}>
           Empowering Future Leaders
         </h2>

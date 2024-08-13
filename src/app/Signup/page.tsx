@@ -5,13 +5,13 @@ import Link from 'next/link';
 
 const Signup: React.FC = () => {
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gradient-to-r from-[#112d60] to-[#b6c0c5]'>
-      <div className='w-full max-w-md p-8 bg-white shadow-md rounded-lg'>
-        <h1 className='text-2xl font-bold text-[#112d60] mb-6 text-center'>Sign Up</h1>
+    <div className='min-h-screen flex items-center justify-center bg-gradient-to-t from-[#7defe0] to-[#b6c0c5]'>
+      <div className='w-full max-w-md p-8 bg-gradient-to-b from-[#112d60] to-[#b6c0c5]shadow-md rounded-lg'>
+        <h1 className='text-2xl font-bold text-white mb-6 text-center'>Sign Up</h1>
         <form>
             
           <div className='mb-4'>
-            <label htmlFor='username' className='block text-gray-700'>Username</label>
+            <label htmlFor='username' className='block text-white'>Username</label>
             <input
               type='text'
               id='username'
@@ -20,7 +20,7 @@ const Signup: React.FC = () => {
             />
           </div>
           <div className='mb-4'>
-            <label htmlFor='email' className='block text-gray-700'>Email</label>
+            <label htmlFor='email' className='block text-white'>Email</label>
             <input
               type='email'
               id='email'
@@ -29,7 +29,7 @@ const Signup: React.FC = () => {
             />
           </div>
           <div className='mb-4'>
-            <label htmlFor='password' className='block text-gray-700'>Password</label>
+            <label htmlFor='password' className='block text-white'>Password</label>
             <input
               type='password'
               id='password'

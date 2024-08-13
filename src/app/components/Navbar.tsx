@@ -34,8 +34,8 @@ const Navbar = () => {
     // Nav items
     const navItems = [
         { link: "Internships List", path: "/internshiplist" },
-        { link: "About", path: "#about" }, // Updated path
-        { link: "Contact", path: "/contact" }
+        { link: "About", path: "#about" }, 
+        { link: "Contact", path: "#contact" }
     ];
 
     const secondaryNavItems = [

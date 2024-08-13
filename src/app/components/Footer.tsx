@@ -3,7 +3,7 @@ import { BsFacebook, BsInstagram, BsTwitter, BsGithub } from 'react-icons/bs';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#112d60] text-white py-6">
+    <footer className="bg-[#112d60] text-white pt-10">
       <div className="w-full px-4 lg:px-24">
         <div className="flex flex-col items-center md:flex-row md:justify-between">
           <div className="mb-4 md:mb-0">

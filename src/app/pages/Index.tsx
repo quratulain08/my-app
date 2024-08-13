@@ -3,6 +3,7 @@ import Layout from '../components/Layout'; // Adjust the path if necessary
 import Banner from '../components/Banner';
 import About from '../components/About';
 import KeyFeatures from '../components/KeyFeatures';
+import Contact from '../components/Contact';
 
 
 const Index: React.FC = () => {
@@ -11,8 +12,7 @@ const Index: React.FC = () => {
       <Banner />
       <KeyFeatures/>
       <About />
-     
-      {/* Add any additional components here */}
+      <Contact/>
     </Layout>
   );
 };
