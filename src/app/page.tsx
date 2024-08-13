@@ -1,17 +1,15 @@
 
-import Navbar from './components/Navbar';
-import Banner from './components/Banner';
+import React from 'react';
+import Index from './pages/Index';
+import Navbar from './components/Navbar'; // Import the Navbar component
 
-const Home: React.FC = () => {
+const Page: React.FC = () => {
   return (
     <>
-      <Navbar />
-      <main>
-        <Banner />
-        
-      </main>
+      <Navbar /> 
+      <Index />
     </>
   );
-};
+}
 
-export default Home;
+export default Page;

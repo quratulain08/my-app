@@ -7,6 +7,7 @@ const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
     const [showSecondaryNav, setShowSecondaryNav] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
 
     // Toggle menu
     const toggleMenu = () => {
@@ -33,7 +34,7 @@ const Navbar = () => {
     // Nav items
     const navItems = [
         { link: "Internships List", path: "/internshiplist" },
-        { link: "About", path: "/about" },
+        { link: "About", path: "#about" }, // Updated path
         { link: "Contact", path: "/contact" }
     ];
 
@@ -45,8 +46,10 @@ const Navbar = () => {
     ];
 
     return (
-        <>  
-            <header className={`fixed top-0 left-0 right-0 w-full ${isSticky ? "bg-gradient-to-r from-[#112d60] to-[#b6c0c5]" : "bg-gradient-to-r from-[#112d60] to-[#b6c0c5]"} bg-cover`}>
+        <>
+            <header
+                className={`fixed top-0 left-0 right-0 w-full ${isSticky ? "bg-gradient-to-r from-[#112d60] to-[#b6c0c5] shadow-lg" : "bg-gradient-to-r from-[#112d60] to-[#b6c0c5]"} z-50 transition-all duration-300`}
+            >
                 <nav className="py-0 lg:px-14 px-2 flex items-center justify-between">
                     {/* Logo and Title */}
                     <div className='flex items-center gap-2'>
@@ -60,7 +63,7 @@ const Navbar = () => {
 
                     {/* Centered Title */}
                     <div className="flex-1 text-center">
-                        <h1 className="text-white text-xl font-bold italic font-moonlight">
+                        <h1 className="text-white text-xl font-bold italic font-pacifico">
                             Internship Log
                         </h1>
                     </div>
@@ -70,9 +73,9 @@ const Navbar = () => {
                         {
                             navItems.map(({ link, path }) => (
                                 <li key={path}>
-                                    <Link href={path} className='block text-sm text-white uppercase cursor-pointer hover:text-blue-900'>
+                                    <a href={path} className='block text-sm text-white uppercase cursor-pointer hover:text-blue-900'>
                                         {link}
-                                    </Link>
+                                    </a>
                                 </li>
                             ))
                         }
@@ -80,7 +83,21 @@ const Navbar = () => {
                     {/* Button for lg devices */}
                     <div className='items-center hidden space-x-12 lg:flex'>
                         <button>
-                            <FaBarsStaggered className='pl-2 h-6 w-6 text-white hover:text-blue-900' />
+                            <div
+                                onMouseEnter={() => setIsHovered(true)}
+                                onMouseLeave={() => setIsHovered(false)}
+                                style={{
+                                    backgroundColor: isHovered ? "#1e3a8a" : "transparent",
+                                    transition: "background-color 0.3s",
+                                    padding: "8px",
+                                    borderRadius: "4px"
+                                }}
+                            >
+                                <FaBarsStaggered
+                                    size={24}
+                                    color="white"
+                                />
+                            </div>
                         </button>
                     </div>
 
@@ -88,8 +105,8 @@ const Navbar = () => {
                     <div className='md:hidden'>
                         <button onClick={toggleMenu} className='text-white focus:outline-none'>
                             {
-                                isMenuOpen ? <FaXmark className='w-5 h-5 text-white' /> : <FaBarsStaggered
-                                    className='w-5 h-5 text-white' />
+                                isMenuOpen ? <FaXmark size={24} color="white" /> : <FaBarsStaggered
+                                    size={24} color="white" />
                             }
                         </button>
                     </div>
@@ -98,7 +115,7 @@ const Navbar = () => {
 
             {/* Secondary Navbar */}
             {showSecondaryNav && (
-                <div className="fixed top-16 left-0 right-0 bg-[#b6c0c5] shadow-lg transform transition-transform duration-300 ease-in-out hover:translate-y-[-2px] hover:shadow-xl">
+                <div className="fixed top-16 left-0 right-0 bg-[#b6c0c5] shadow-lg transform transition-transform duration-300 ease-in-out hover:translate-y-[-2px] hover:shadow-xl z-40">
                     <nav className="py-2 px-4 flex items-center justify-center">
                         <ul className="flex space-x-8">
                             {
@@ -116,19 +133,21 @@ const Navbar = () => {
             )}
 
             {/* Nav items for small devices */}
-            <div className={`space-y-4 px-4 mt-16 py-7 ${isMenuOpen ? "block fixed top-0 right-0 left-0 bg-[#042444]" : "hidden"}`}>
-                {
-                    navItems.map(({ link, path }) => (
-                        <li key={path}>
-                            <Link href={path} className='block text-sm text-white uppercase cursor-pointer hover:text-blue-900'>
-                                {link}
-                            </Link>
-                        </li>
-                    ))
-                }
+            <div className={`space-y-4 px-4 mt-16 py-7 ${isMenuOpen ? "block fixed top-0 right-0 left-0 bg-[#042444]" : "hidden"} z-50`}>
+                <ul>
+                    {
+                        navItems.map(({ link, path }) => (
+                            <li key={path}>
+                                <a href={path} className='block text-sm text-white uppercase cursor-pointer hover:text-blue-900'>
+                                    {link}
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
             </div>
         </>
-    )
+    );
 }
 
 export default Navbar;

@@ -14,7 +14,9 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
           
       },
+
       rubikMonoOne: ['Rubik Mono One', 'monospace'],
+      pacifico: ['Pacifico', 'cursive'],
     },
   },
   plugins: [],
