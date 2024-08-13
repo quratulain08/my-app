@@ -31,6 +31,19 @@ const Navbar = () => {
         }
     }, [])
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 768) {
+                setIsMenuOpen(false); // Close the menu on larger screens
+            }
+        }
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        }
+    }, [])
+
     // Nav items
     const navItems = [
         { link: "Internships List", path: "/internshiplist" },
@@ -61,8 +74,8 @@ const Navbar = () => {
                         </Link>
                     </div>
 
-                    {/* Centered Title */}
-                    <div className="flex-1 text-center">
+                    {/* Centered Title (hidden on small devices) */}
+                    <div className="flex-1 text-center hidden md:block">
                         <h1 className="text-white text-xl font-bold italic font-pacifico">
                             Internship Log
                         </h1>
@@ -133,18 +146,23 @@ const Navbar = () => {
             )}
 
             {/* Nav items for small devices */}
-            <div className={`space-y-4 px-4 mt-16 py-7 ${isMenuOpen ? "block fixed top-0 right-0 left-0 bg-[#042444]" : "hidden"} z-50`}>
-                <ul>
-                    {
-                        navItems.map(({ link, path }) => (
-                            <li key={path}>
-                                <a href={path} className='block text-sm text-white uppercase cursor-pointer hover:text-blue-900'>
-                                    {link}
-                                </a>
-                            </li>
-                        ))
-                    }
-                </ul>
+            <div className={`fixed top-0 left-0 right-0 bg-[#042444] ${isMenuOpen ? "block" : "hidden"} z-50 transition-transform transform translate-x-0 md:hidden`}>
+                <div className="relative p-4 mt-16">
+                    <button onClick={toggleMenu} className="absolute top-2 right-2 text-white">
+                        <FaXmark size={24} />
+                    </button>
+                    <ul className="space-y-4">
+                        {
+                            navItems.map(({ link, path }) => (
+                                <li key={path}>
+                                    <a href={path} className='block text-lg text-white uppercase cursor-pointer hover:text-blue-400'>
+                                        {link}
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
             </div>
         </>
     );
