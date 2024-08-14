@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import Layout from '../components/Layout'; // Adjust the path if necessary
 import Banner from '../components/Banner';
@@ -13,6 +15,7 @@ const Index: React.FC = () => {
       <KeyFeatures/>
       <About />
       <Contact/>
+     
     </Layout>
   );
 };
