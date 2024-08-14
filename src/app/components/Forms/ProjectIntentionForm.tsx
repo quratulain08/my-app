@@ -2,16 +2,16 @@
 import React, { useState, FormEvent } from 'react';
 
 const ProjectIntentionForm: React.FC = () => {
-  const [projectId, setProjectId] = useState('');
-  const [facultyName, setFacultyName] = useState('');
-  const [department, setDepartment] = useState('');
-  const [degreeProgram, setDegreeProgram] = useState('');
-  const [projectTitle, setProjectTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [facultySignature, setFacultySignature] = useState('');
+  const [projectId, setProjectId] = useState<string>('');
+  const [facultyName, setFacultyName] = useState<string>('');
+  const [department, setDepartment] = useState<string>('');
+  const [degreeProgram, setDegreeProgram] = useState<string>('');
+  const [projectTitle, setProjectTitle] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
+  const [facultySignature, setFacultySignature] = useState<string>('');
 
   // Handle form submission
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     const projectObj = {
       projectId,
@@ -38,14 +38,14 @@ const ProjectIntentionForm: React.FC = () => {
   };
 
   return (
-    <div className="px-4 my-12 min-h-screen">
-      <div className="bg-[#b6c0c5] text-[#112d60]  rounded-lg p-6 max-w-4xl mx-auto">
-        <h2 className="mb-8 text-3xl font-bold text-center">Internship/Project Intention Form</h2>
+    <div className="px-4 py-8 sm:py-12 min-h-screen bg-[#f7f7f7]">
+      <div className="bg-[#b6c0c5] text-[#112d60] rounded-lg p-6 max-w-full sm:max-w-4xl mx-auto shadow-none">
+        <h2 className="mb-8 text-2xl sm:text-3xl font-bold text-center">Internship/Project Intention Form</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Project ID */}
             <div>
-              <label htmlFor="projectId" className="block mb-2 text-lg font-medium">
+              <label htmlFor="projectId" className="block mb-2 text-base sm:text-lg font-medium">
                 Project ID
               </label>
               <input
@@ -61,7 +61,7 @@ const ProjectIntentionForm: React.FC = () => {
 
             {/* Faculty Member Name */}
             <div>
-              <label htmlFor="facultyName" className="block mb-2 text-lg font-medium">
+              <label htmlFor="facultyName" className="block mb-2 text-base sm:text-lg font-medium">
                 Name of Faculty Member
               </label>
               <input
@@ -77,7 +77,7 @@ const ProjectIntentionForm: React.FC = () => {
 
             {/* Department */}
             <div>
-              <label htmlFor="department" className="block mb-2 text-lg font-medium">
+              <label htmlFor="department" className="block mb-2 text-base sm:text-lg font-medium">
                 Department
               </label>
               <input
@@ -93,7 +93,7 @@ const ProjectIntentionForm: React.FC = () => {
 
             {/* Targeted Degree Program */}
             <div>
-              <label htmlFor="degreeProgram" className="block mb-2 text-lg font-medium">
+              <label htmlFor="degreeProgram" className="block mb-2 text-base sm:text-lg font-medium">
                 Targeted Degree Program
               </label>
               <input
@@ -109,7 +109,7 @@ const ProjectIntentionForm: React.FC = () => {
 
             {/* Project Title */}
             <div>
-              <label htmlFor="projectTitle" className="block mb-2 text-lg font-medium">
+              <label htmlFor="projectTitle" className="block mb-2 text-base sm:text-lg font-medium">
                 Project Title
               </label>
               <input
@@ -125,7 +125,7 @@ const ProjectIntentionForm: React.FC = () => {
 
             {/* Faculty Signature */}
             <div>
-              <label htmlFor="facultySignature" className="block mb-2 text-lg font-medium">
+              <label htmlFor="facultySignature" className="block mb-2 text-base sm:text-lg font-medium">
                 Faculty Signature
               </label>
               <input
@@ -142,7 +142,7 @@ const ProjectIntentionForm: React.FC = () => {
 
           {/* Description */}
           <div>
-            <label htmlFor="description" className="block mb-2 text-lg font-medium">
+            <label htmlFor="description" className="block mb-2 text-base sm:text-lg font-medium">
               Description
             </label>
             <textarea
@@ -160,7 +160,7 @@ const ProjectIntentionForm: React.FC = () => {
           <div className="flex justify-center mt-4">
             <button
               type="submit"
-              className="w-20 py-1 px-2 bg-[#112d60] text-white rounded-md shadow-sm hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900"
+              className="w-full sm:w-1/3 py-2 px-4 bg-[#112d60] text-white rounded-md shadow-sm hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900"
             >
               Submit
             </button>
