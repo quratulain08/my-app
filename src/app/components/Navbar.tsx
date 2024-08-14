@@ -55,7 +55,7 @@ const Navbar = () => {
         { link: "Home", path: "/" },
         { link: "Internships", path: "/internshiplist" },
         { link: "Students", path: "/students" },
-        { link: "Dashboard", path: "/dashboard" }
+        { link: "organization", path: "/organization" }
     ];
 
     return (
