@@ -38,8 +38,8 @@ const ProjectIntentionForm: React.FC = () => {
   };
 
   return (
-    <div className="px-4 py-8 sm:py-12 min-h-screen bg-[#f7f7f7]">
-      <div className="bg-[#b6c0c5] text-[#112d60] rounded-lg p-6 max-w-full sm:max-w-4xl mx-auto shadow-none">
+    <div className="flex items-center justify-center min-h-screen bg-[#f7f7f7]">
+      <div className="p-6 bg-[#b6c0c5] text-[#112d60] rounded-lg shadow-none max-w-full sm:max-w-4xl w-full">
         <h2 className="mb-8 text-2xl sm:text-3xl font-bold text-center">Internship/Project Intention Form</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

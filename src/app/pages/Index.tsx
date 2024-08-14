@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import Layout from '../components/Layout'; // Adjust the path if necessary
+import Layout from '../components/Layout'; 
 import Banner from '../components/Banner';
 import About from '../components/About';
 import KeyFeatures from '../components/KeyFeatures';
