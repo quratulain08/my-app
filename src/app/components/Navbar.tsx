@@ -55,10 +55,13 @@ const Navbar = () => {
 
     const secondaryNavItems = [
         { link: "Home", path: "/" },
-        { link: "Faculty", path: "/Faculty" },
+        { link: "Faculty Supervisor", path: "/Faculty" },
+        { link: "Site Supervisor", path: "/SiteSupervisor" },
         { link: "Students", path: "/Student" },
-        { link: "Organization", path: "/Organization" }
+        { link: "DIC", path: "/DIC" },
+        { link: "AU/PO", path: "/AU/PO" }
     ];
+
 
     return (
         <>

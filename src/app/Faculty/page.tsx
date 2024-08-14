@@ -79,11 +79,11 @@ const Sidebar: React.FC = () => {
           </li>
           <li>
             <button
-              onClick={() => handleNavigation('/faculty/evaluate-students')}
+              onClick={() => handleNavigation('/Forms/FacultySupervsiorEvaluationForm')}
               className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
             >
               <HiStar className="mr-3 text-xl" />
-              <span>Evaluate Students</span>
+              <span>Faculty Supervisor Evaluation Form</span>
             </button>
           </li>
           {/* Logout Button */}
