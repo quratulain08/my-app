@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from 'react';
-import { HiPlus, HiViewList, HiDocumentReport, HiEye, HiStar, HiDocument, HiLogout } from 'react-icons/hi';
+import { HiPlus, HiViewList, HiDocumentReport, HiEye, HiStar, HiDocument, HiLogout, HiMenu, HiX } from 'react-icons/hi';
 import Link from 'next/link';
 import ProjectIntentionForm from '../components/Forms/ProjectIntentionForm';
 
 const Sidebar: React.FC = () => {
   const [showProjectForm, setShowProjectForm] = useState<boolean>(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false); // Sidebar starts closed on small screens
   const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(true);
 
   // Function to handle logout logic
@@ -103,7 +103,7 @@ const Sidebar: React.FC = () => {
         className="fixed top-4 right-4 z-50 md:hidden bg-gray-200 p-2 rounded"
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       >
-        {isSidebarOpen ? 'Close Sidebar' : 'Open Sidebar'}
+        {isSidebarOpen ? <HiX className="text-xl" /> : <HiMenu className="text-xl" />}
       </button>
 
       {/* Main Content */}
@@ -118,7 +118,7 @@ const Sidebar: React.FC = () => {
         )}
         {showProjectForm && (
           <div className="flex justify-center items-center h-full">
-            <div className="p-4 w-full max-w-4xl">
+            <div className="p-4 w-full max-w-4xl bg-[#f7f7f7] shadow-none">
               <ProjectIntentionForm />
             </div>
           </div>
