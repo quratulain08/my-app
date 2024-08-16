@@ -49,7 +49,7 @@ const DICSidebar: React.FC = () => {
           </li>
           <li>
             <button
-              onClick={() => handleNavigation('/ShareConsolidatedReport')} 
+              onClick={() => handleNavigation('/Forms/ConsolidatedReport')} 
               className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
             >
               <HiChartBar className="mr-3 text-xl" />
