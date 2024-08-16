@@ -1,19 +1,19 @@
 "use client";
 import React, { useState } from 'react';
-import { HiPlus, HiViewList, HiDocumentReport, HiLogout, HiMenu, HiX } from 'react-icons/hi';
-import { useRouter } from 'next/navigation'; 
-import EligiblityCriteria from '../components/EligiblityCriteria';
+import { HiPlus, HiViewList, HiDocumentReport, HiEye, HiStar, HiDocument, HiLogout, HiMenu, HiX } from 'react-icons/hi';
+import { useRouter } from 'next/navigation'; // Updated import for router
 
-const StudentSidebar: React.FC = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false); 
+const Sidebar: React.FC = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false); // Sidebar starts closed on small screens
   const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(true);
 
   const router = useRouter();
 
   // Function to handle logout logic
   const handleLogout = () => {
+    // Your logout logic here, e.g., clearing user session and redirecting
     console.log('Logging out...');
-    router.push('/');
+    router.push('/'); // Redirect to the homepage or login page after logout
   };
 
   // Function to handle navigation
@@ -26,37 +26,64 @@ const StudentSidebar: React.FC = () => {
     <div className="flex">
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 w-64 h-screen bg-[#112d60] text-white p-4 transition-transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 z-40`}
+        className={`fixed top-0 left-0 w-64 h-screen bg-[#112d60] text-white p-4 transition-transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
       >
         <div className="flex items-center mb-6">
-          <div className="text-2xl font-bold text-white mb-6">Student Portal</div>
+          <div className="text-2xl font-bold text-white mb-6">Faculty Portal</div>
         </div>
         <ul className="space-y-2">
           <li>
             <button
-              onClick={() => handleNavigation('/Forms/StudentInternshipApprovalForm')} 
+              onClick={() => handleNavigation('/Forms/ProjectIntentionForm')} 
               className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
             >
               <HiPlus className="mr-3 text-xl" />
-              <span>Student Internship Approval Form</span>
+              <span>Project Intention Form</span>
             </button>
           </li>
           <li>
             <button
-              onClick={() => handleNavigation('/Forms/StudentInternshipProgressForm')} 
+              onClick={() => handleNavigation('/faculty/view-student-progress')}
               className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
             >
               <HiDocumentReport className="mr-3 text-xl" />
-              <span>Student Internship Progress Form</span>
+              <span>View Student Progress Report</span>
             </button>
           </li>
           <li>
             <button
-              onClick={() => handleNavigation('/Forms/StudentInternshipActivityLog')} 
+              onClick={() => handleNavigation('/faculty/view-student-activity-log')}
               className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
             >
               <HiViewList className="mr-3 text-xl" />
-              <span>Student Internship Activity Log</span>
+              <span>View Student Activity Log</span>
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => handleNavigation('/faculty/view-student-final-report')}
+              className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
+            >
+              <HiDocument className="mr-3 text-xl" />
+              <span>View Student Final Report</span>
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => handleNavigation('/faculty/view-site-supervisor-evaluation')}
+              className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
+            >
+              <HiEye className="mr-3 text-xl" />
+              <span>View Site Supervisor Evaluation Form</span>
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => handleNavigation('/Forms/FacultySupervisorEvaluationForm')}
+              className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
+            >
+              <HiStar className="mr-3 text-xl" />
+              <span>Evaluate Students</span>
             </button>
           </li>
           {/* Logout Button */}
@@ -83,11 +110,10 @@ const StudentSidebar: React.FC = () => {
       {/* Main Content */}
       <div className={`flex-1 p-4 transition-transform ${isSidebarOpen ? 'ml-64' : 'ml-0'} md:ml-64`}>
         {showWelcomeMessage && (
-          <div className="flex justify-center items-center h-full">
+          <div className="flex justify-center items-center h-full ">
             <div className="p-4 w-full max-w-4xl text-center text-xl text-[#112d60]">
-              <h1 className="font-serif">Welcome to the Student Portal</h1>
+              <h1 className="font-serif">Welcome to the Faculty Portal</h1>
               <p>Select an option from the sidebar to get started.</p>
-              <EligiblityCriteria />
             </div>
           </div>
         )}
@@ -97,4 +123,4 @@ const StudentSidebar: React.FC = () => {
   );
 };
 
-export default StudentSidebar;
+export default Sidebar;
