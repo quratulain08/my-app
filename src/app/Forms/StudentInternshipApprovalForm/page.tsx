@@ -12,6 +12,7 @@ const StudentInternshipApprovalForm: React.FC = () => {
   const [hostInstitution, setHostInstitution] = useState<string>('');
   const [siteSupervisor, setSiteSupervisor] = useState<string>('');
   const [cv, setCv] = useState<File | null>(null);
+  const [email, setEmail] = useState<string>(''); // New state for email
 
   // Handle form submission
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -27,6 +28,7 @@ const StudentInternshipApprovalForm: React.FC = () => {
       hostInstitution,
       siteSupervisor,
       cv: cv ? cv.name : 'No file uploaded', // Include file name or status
+      email, // Include email in submission data
     };
     console.log(internshipObj);
 
@@ -44,6 +46,7 @@ const StudentInternshipApprovalForm: React.FC = () => {
     setHostInstitution('');
     setSiteSupervisor('');
     setCv(null); // Reset file input
+    setEmail(''); // Reset email input
   };
 
   // Handle file selection
@@ -197,6 +200,22 @@ const StudentInternshipApprovalForm: React.FC = () => {
                 onChange={(e) => setSiteSupervisor(e.target.value)}
                 placeholder="Enter Site Supervisor"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label htmlFor="email" className="block mb-2 text-base sm:text-lg font-medium">
+                Email Address
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter Email Address"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                required
               />
             </div>
 
