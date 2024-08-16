@@ -58,7 +58,7 @@ const Navbar = () => {
         { link: "Faculty Supervisor", path: "/Faculty" },
         { link: "Students", path: "/Student" },
         { link: "DIC", path: "/DIC" },
-        { link: "AU/PO", path: "/AU/PO" }
+        { link: "AU/PO", path: "/PlacementOffice" }
     ];
 
 
