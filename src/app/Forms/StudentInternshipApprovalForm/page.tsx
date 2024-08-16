@@ -11,6 +11,7 @@ const StudentInternshipApprovalForm: React.FC = () => {
   const [facultySupervisor, setFacultySupervisor] = useState<string>('');
   const [hostInstitution, setHostInstitution] = useState<string>('');
   const [siteSupervisor, setSiteSupervisor] = useState<string>('');
+  const [cv, setCv] = useState<File | null>(null);
 
   // Handle form submission
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -25,6 +26,7 @@ const StudentInternshipApprovalForm: React.FC = () => {
       facultySupervisor,
       hostInstitution,
       siteSupervisor,
+      cv: cv ? cv.name : 'No file uploaded', // Include file name or status
     };
     console.log(internshipObj);
 
@@ -41,6 +43,14 @@ const StudentInternshipApprovalForm: React.FC = () => {
     setFacultySupervisor('');
     setHostInstitution('');
     setSiteSupervisor('');
+    setCv(null); // Reset file input
+  };
+
+  // Handle file selection
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setCv(event.target.files[0]);
+    }
   };
 
   return (
@@ -187,6 +197,19 @@ const StudentInternshipApprovalForm: React.FC = () => {
                 onChange={(e) => setSiteSupervisor(e.target.value)}
                 placeholder="Enter Site Supervisor"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              />
+            </div>
+
+            {/* CV Upload */}
+            <div>
+              <label htmlFor="cv" className="block mb-2 text-base sm:text-lg font-medium">
+                Upload CV
+              </label>
+              <input
+                id="cv"
+                type="file"
+                onChange={handleFileChange}
+                className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded-md file:text-sm file:font-semibold file:bg-gray-100 hover:file:bg-gray-200"
               />
             </div>
           </div>
