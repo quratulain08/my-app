@@ -43,7 +43,7 @@ const Sidebar: React.FC = () => {
           </li>
           <li>
             <button
-              onClick={() => handleNavigation('/faculty/view-student-progress')}
+              onClick={() => handleNavigation('/GetData/GetStudentInternshipProgress')}
               className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
             >
               <HiDocumentReport className="mr-3 text-xl" />
@@ -52,31 +52,15 @@ const Sidebar: React.FC = () => {
           </li>
           <li>
             <button
-              onClick={() => handleNavigation('/faculty/view-student-activity-log')}
+              onClick={() => handleNavigation('/GetData/GetInternshipActivityLog')}
               className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
             >
               <HiViewList className="mr-3 text-xl" />
               <span>View Student Activity Log</span>
             </button>
           </li>
-          <li>
-            <button
-              onClick={() => handleNavigation('/faculty/view-student-final-report')}
-              className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
-            >
-              <HiDocument className="mr-3 text-xl" />
-              <span>View Student Final Report</span>
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => handleNavigation('/faculty/view-site-supervisor-evaluation')}
-              className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
-            >
-              <HiEye className="mr-3 text-xl" />
-              <span>View Site Supervisor Evaluation Form</span>
-            </button>
-          </li>
+        
+      
           <li>
             <button
               onClick={() => handleNavigation('/Forms/FacultySupervisorEvaluationForm')}
