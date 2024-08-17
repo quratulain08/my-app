@@ -26,7 +26,7 @@ const AUPPlacementSidebar: React.FC = () => {
         <ul className="space-y-2">
           <li>
             <button
-              onClick={() => handleNavigation('/Internships/ListNew')} // Navigate to the page for listing new internships
+              onClick={() => handleNavigation('/Forms/PostInternship')} // Navigate to the page for listing new internships
               className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
             >
               <HiPlus className="mr-3 text-xl" />
@@ -35,16 +35,16 @@ const AUPPlacementSidebar: React.FC = () => {
           </li>
           <li>
             <button
-              onClick={() => handleNavigation('/Internships/ViewListed')} // Navigate to the page for viewing listed internships
+              onClick={() => handleNavigation('/GetData/GetPostedInternship')} // Navigate to the page for viewing listed internships
               className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
             >
               <HiViewList className="mr-3 text-xl" />
               <span>View Listed Internships</span>
-            </button>
+            </button> 
           </li>
           <li>
             <button
-              onClick={() => handleNavigation('/GetData/GetConsolidatedReport')} // Navigate to the page for viewing the consolidated report
+              onClick={() => handleNavigation('/GetData/GetStudentInternshipApproval')} // Navigate to the page for viewing the consolidated report
               className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
             >
               <HiDocumentReport className="mr-3 text-xl" />
