@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { HiDocumentReport, HiViewList, HiChartBar, HiCog, HiLogout, HiMenu, HiX } from 'react-icons/hi';
+import { HiDocumentReport, HiViewList, HiChartBar, HiCog, HiLogout, HiMenu, HiX, HiEye } from 'react-icons/hi';
 import { useRouter } from 'next/navigation';
 
 const DICSidebar: React.FC = () => {
@@ -40,7 +40,7 @@ const DICSidebar: React.FC = () => {
           </li>
           <li>
             <button
-              onClick={() => handleNavigation('/AvailableInternships')} 
+              onClick={() => handleNavigation('/GetData/GetPostedInternship')} 
               className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
             >
               <HiViewList className="mr-3 text-xl" />
@@ -72,6 +72,15 @@ const DICSidebar: React.FC = () => {
             >
               <HiCog className="mr-3 text-xl" />
               <span>Enter Grades</span>
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => handleNavigation('/GetData/GetFacultyEvaluationForm')} // Navigate to the Faculty Supervisor Evaluation Form
+              className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
+            >
+              <HiEye className="mr-3 text-xl" />
+              <span>View Faculty Supervisor Evaluation Form</span>
             </button>
           </li>
           {/* Logout Button */}
