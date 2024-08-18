@@ -70,6 +70,15 @@ const Sidebar: React.FC = () => {
               <span>Evaluate Students</span>
             </button>
           </li>
+          <li>
+            <button
+              onClick={() => handleNavigation('/GetData/GetSiteSupervisorEvaluationForm')}
+              className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
+            >
+              <HiEye className="mr-3 text-xl" />
+              <span>View Site Supervisor Evaluation</span>
+            </button>
+          </li>
           {/* Logout Button */}
           <li>
             <button
