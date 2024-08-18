@@ -1,6 +1,5 @@
 "use client";
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 // Dummy data for evaluations
 const evaluations = [
@@ -87,22 +86,54 @@ const EvaluationPage: React.FC = () => {
                   <h3 className="text-lg font-semibold">Student ID</h3>
                   <p>{evaluationDetails[selectedId].studentId}</p>
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold">Tasks Performed</h3>
-                  <p>{evaluationDetails[selectedId].tasksPerformed}</p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold">Learning Experience</h3>
-                  <p>{evaluationDetails[selectedId].learningExperience}</p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold">Overcoming Challenges</h3>
-                  <p>{evaluationDetails[selectedId].overcomingChallenges}</p>
-                </div>
               </div>
 
+              {/* Display performance criteria and key */}
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold">Performance Criteria</h3>
+                <ul className="list-disc list-inside ml-4">
+                  <li>Tasks Performed</li>
+                  <li>Learning Experience</li>
+                  <li>Overcoming Challenges</li>
+                </ul>
+
+                <h3 className="text-lg font-semibold mt-6">Key</h3>
+                <ul className="list-disc list-inside ml-4">
+                  <li>1 = Does not meet expectations</li>
+                  <li>2 = Inconsistently meets expectations</li>
+                  <li>3 = Consistently meets expectations</li>
+                  <li>4 = Above Expectations</li>
+                  <li>5 = Far above expectations</li>
+                </ul>
+              </div>
+
+              {/* Display performance scores in a table */}
+              <h3 className="text-lg font-semibold mt-6">Performance Scores</h3>
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr>
+                    <th className="border px-4 py-2">Criteria</th>
+                    <th className="border px-4 py-2">Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border px-4 py-2">Tasks Performed</td>
+                    <td className="border px-4 py-2 text-center">{evaluationDetails[selectedId].tasksPerformed}</td>
+                  </tr>
+                  <tr>
+                    <td className="border px-4 py-2">Learning Experience</td>
+                    <td className="border px-4 py-2 text-center">{evaluationDetails[selectedId].learningExperience}</td>
+                  </tr>
+                  <tr>
+                    <td className="border px-4 py-2">Overcoming Challenges</td>
+                    <td className="border px-4 py-2 text-center">{evaluationDetails[selectedId].overcomingChallenges}</td>
+                  </tr>
+                </tbody>
+              </table>
+
               {/* Display comments */}
-              <div>
+              <div className="mt-6">
                 <h3 className="text-lg font-semibold">Comments</h3>
                 <p>{evaluationDetails[selectedId].comments}</p>
               </div>
