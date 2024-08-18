@@ -33,6 +33,16 @@ const StudentSidebar: React.FC = () => {
           <div className="text-2xl font-bold text-white mb-6">Student Portal</div>
         </div>
         <ul className="space-y-2">
+
+        <li>
+            <button
+              onClick={() => handleNavigation('/GetData/GetPostedInternship')} // Navigate to the page
+              className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
+            >
+              <HiEye className="mr-3 text-xl" />
+              <span>View Posted Internships</span>
+            </button>
+          </li> 
           <li>
             <button
               onClick={() => handleNavigation('/Forms/StudentInternshipApprovalForm')} // Navigate to the page
