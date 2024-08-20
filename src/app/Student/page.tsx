@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { HiPlus, HiViewList, HiDocumentReport, HiEye, HiLogout, HiMenu, HiX } from 'react-icons/hi';
+import { HiPlus, HiViewList, HiDocumentReport, HiEye, HiLogout, HiMenu, HiX ,HiChat} from 'react-icons/hi';
 import { useRouter } from 'next/navigation'; 
 import EligiblityCriteria from '../components/EligiblityCriteria';
 
@@ -61,6 +61,7 @@ const StudentSidebar: React.FC = () => {
               <span>Student Internship Progress Form</span>
             </button>
           </li>
+
           <li>
             <button
               onClick={() => handleNavigation('/Forms/StudentInternshipActivityLog')} 
@@ -68,6 +69,15 @@ const StudentSidebar: React.FC = () => {
             >
               <HiViewList className="mr-3 text-xl" />
               <span>Student Internship Activity Log</span>
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => handleNavigation('/Forms/StudentInternshipProgressForm')} 
+              className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
+            >
+              <HiChat className="mr-3 text-xl" />
+              <span>Chat With Supervisors</span>
             </button>
           </li>
           {/* Logout Button */}
