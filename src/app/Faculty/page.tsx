@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
-import { HiPlus, HiViewList, HiDocumentReport, HiEye, HiStar, HiDocument, HiLogout, HiMenu, HiX } from 'react-icons/hi';
-import { useRouter } from 'next/navigation'; // Updated import for router
+import { HiPlus, HiViewList, HiDocumentReport, HiEye, HiStar, HiDocument, HiLogout, HiMenu, HiX,HiChat } from 'react-icons/hi';
+import { useRouter } from 'next/navigation'; 
 
 const Sidebar: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false); // Sidebar starts closed on small screens
@@ -77,6 +77,15 @@ const Sidebar: React.FC = () => {
             >
               <HiEye className="mr-3 text-xl" />
               <span>View Site Supervisor Evaluation</span>
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => handleNavigation('/GetData/GetSiteSupervisorEvaluationForm')}
+              className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
+            >
+              <HiChat className="mr-3 text-xl" />
+              <span>Chat with students</span>
             </button>
           </li>
           {/* Logout Button */}
