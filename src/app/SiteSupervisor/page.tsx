@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { HiDocumentReport, HiViewList, HiChartBar, HiCog, HiLogout, HiMenu, HiX, HiEye } from 'react-icons/hi';
+import { HiDocumentReport, HiViewList, HiChartBar, HiCog, HiLogout, HiMenu, HiX, HiEye ,HiChat} from 'react-icons/hi';
 import { useRouter } from 'next/navigation';
 
 const SiteSupervisorSidebar: React.FC = () => {
@@ -36,6 +36,16 @@ const SiteSupervisorSidebar: React.FC = () => {
             >
               <HiEye className="mr-3 text-xl" />
               <span>Submit Site Supervisor Evaluation Form</span>
+            </button>
+          </li>
+
+          <li>
+            <button
+              onClick={() => handleNavigation('Forms/SiteSupervisorEvaluationForm')} // Navigate to Submit Site Supervisor Evaluation Form
+              className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
+            >
+              <HiChat className="mr-3 text-xl" />
+              <span>Chat With students</span>
             </button>
           </li>
           {/* Logout Button */}
