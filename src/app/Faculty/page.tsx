@@ -81,7 +81,7 @@ const Sidebar: React.FC = () => {
           </li>
           <li>
             <button
-              onClick={() => handleNavigation('/GetData/GetSiteSupervisorEvaluationForm')}
+              onClick={() => handleNavigation('/chat/Facultychat')}
               className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
             >
               <HiChat className="mr-3 text-xl" />
