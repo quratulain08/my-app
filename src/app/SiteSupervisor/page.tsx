@@ -41,7 +41,7 @@ const SiteSupervisorSidebar: React.FC = () => {
 
           <li>
             <button
-              onClick={() => handleNavigation('Forms/SiteSupervisorEvaluationForm')} // Navigate to Submit Site Supervisor Evaluation Form
+              onClick={() => handleNavigation('/chat/Sitesupervisorchat')} // Navigate to Submit Site Supervisor Evaluation Form
               className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
             >
               <HiChat className="mr-3 text-xl" />
