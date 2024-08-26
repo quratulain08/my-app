@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, FormEvent } from 'react';
+import { useRouter } from 'next/navigation'; // Import useRouter for navigation
 
 const PostInternshipForm: React.FC = () => {
   const [hostInstitution, setHostInstitution] = useState<string>('');
@@ -9,6 +10,8 @@ const PostInternshipForm: React.FC = () => {
   const [internshipType, setInternshipType] = useState<'Onsite' | 'Oncampus'>('Onsite');
   const [joiningDate, setJoiningDate] = useState<string>('');
   const [email, setEmail] = useState<string>('');
+
+  const router = useRouter(); // Create a router instance
 
   // Handle form submission
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -38,7 +41,7 @@ const PostInternshipForm: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#f7f7f7]">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[#f7f7f7]">
       <div className="p-6 bg-[#b6c0c5] text-[#112d60] rounded-lg shadow-none max-w-full sm:max-w-4xl w-full">
         <h2 className="mb-8 text-2xl sm:text-3xl font-bold text-center">Post an Internship</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -74,8 +77,6 @@ const PostInternshipForm: React.FC = () => {
                 required
               />
             </div>
-
-          
 
             {/* Available Internships */}
             <div>
@@ -140,8 +141,9 @@ const PostInternshipForm: React.FC = () => {
                 required
               />
             </div>
-              {/* Project/Internship Description */}
-              <div>
+
+            {/* Project/Internship Description */}
+            <div>
               <label htmlFor="description" className="block mb-2 text-base sm:text-lg font-medium">
                 Project/Internship Description
               </label>
@@ -157,13 +159,20 @@ const PostInternshipForm: React.FC = () => {
             </div>
           </div>
 
-          {/* Submit Button */}
-          <div className="flex justify-center mt-4">
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-4">
             <button
               type="submit"
               className="w-full sm:w-1/3 py-2 px-4 bg-[#112d60] text-white rounded-md shadow-sm hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900"
             >
               Submit
+            </button>
+            <button
+              type="button"
+              onClick={() => router.back()} // Go back to the previous page
+              className="w-full sm:w-1/3 py-2 px-4 bg-gray-500 text-white rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600"
+            >
+              Back
             </button>
           </div>
         </form>

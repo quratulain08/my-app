@@ -8,7 +8,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <>
       <Navbar />
       <main>{children}</main>
-      <Footer />
+     
     </>
   );
 };
