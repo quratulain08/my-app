@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { HiPlus, HiViewList, HiDocumentReport, HiEye, HiLogout, HiMenu, HiX, HiChat } from 'react-icons/hi';
+import { HiPlus, HiViewList, HiDocumentReport, HiEye, HiLogout, HiMenu, HiX, HiChat, HiMail } from 'react-icons/hi';
 import { useRouter } from 'next/navigation'; 
 import Layout from '../components/Layout'; // Ensure the Layout component is imported
 import EligiblityCriteria from '../components/EligiblityCriteria';
@@ -50,6 +50,16 @@ const StudentSidebar: React.FC = () => {
                 <span>Student Internship Approval Form</span>
               </button>
             </li>
+            <li>
+  <button
+    onClick={() => handleNavigation('/Forms/ApplicationForRecommendationLetter')}
+    className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
+  >
+    <HiMail className="mr-3 text-xl" />
+    <span>Application for Recommendation Letter</span>
+  </button>
+</li>
+
             <li>
               <button
                 onClick={() => handleNavigation('/Forms/StudentInternshipProgressForm')}
