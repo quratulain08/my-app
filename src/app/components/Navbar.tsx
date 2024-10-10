@@ -48,7 +48,7 @@ const Navbar = () => {
 
     // Nav items
     const navItems = [
-        { link: "Internships List", path: "/internshiplist" },
+        { link: "Internships List", path: "/GetData/GetPostedInternsip" },
         { link: "About", path: "#about" }, 
         { link: "Contact", path: "#contact" }
     ];
@@ -61,7 +61,7 @@ const Navbar = () => {
         { link: "AU/PO", path: "/PlacementOffice" },
         { link: "Organization", path: "/Organization" },
         { link: "Site Supervisor", path: "/SiteSupervisor" },
-        { link: "User", path: "/User" }
+    
     ];
 
 

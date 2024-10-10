@@ -6,7 +6,7 @@ import RecommendationLetter from '@/models/RecommendationLetter';
 export async function GET() {
   try {
     await connectToDatabase();
-    const letters = await RecommendationLetter.find({}).populate('studentId supervisorId');
+    const letters = await RecommendationLetter.find({}).exec();
     return NextResponse.json(letters);
   } catch (error) {
     console.error('Error fetching recommendation letters:', error);
@@ -17,10 +17,10 @@ export async function GET() {
 // POST: Create a recommendation letter
 export async function POST(req: Request) {
   try {
-    const { studentId, supervisorId, reason } = await req.json();
+    const data = await req.json();
     await connectToDatabase();
 
-    const newLetter = new RecommendationLetter({ studentId, supervisorId, reason });
+    const newLetter = new RecommendationLetter(data);
     await newLetter.save();
 
     return NextResponse.json({ message: 'Recommendation letter created successfully!' });

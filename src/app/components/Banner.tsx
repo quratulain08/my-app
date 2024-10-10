@@ -25,11 +25,7 @@ const Banner = () => {
             <button className="mt-2 md:mt-0 md:ml-2 px-6 py-3 font-medium text-white transition-all duration-200 ease-in bg-[#112d60] hover:bg-black rounded-md">
               Search
             </button>
-            <Link href="/User">
-      <button className="mt-2 md:mt-0 md:ml-2 px-6 py-3 font-medium text-white transition-all duration-200 ease-in bg-[#112d60] hover:bg-black rounded-md">
-        Test
-      </button>
-    </Link>
+          
           </div>
         </div>
 

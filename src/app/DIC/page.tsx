@@ -58,24 +58,8 @@ const DICSidebar: React.FC = () => {
                 <span>Share Consolidated Report</span>
               </button>
             </li>
-            <li>
-              <button
-                onClick={() => handleNavigation('/OverallProgressConsolidatedReport')} 
-                className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
-              >
-                <HiChartBar className="mr-3 text-xl" />
-                <span>Overall Progress Consolidated Report</span>
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => handleNavigation('/EnterGrades')} 
-                className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
-              >
-                <HiCog className="mr-3 text-xl" />
-                <span>Enter Grades</span>
-              </button>
-            </li>
+        
+          
             <li>
               <button
                 onClick={() => handleNavigation('/GetData/GetFacultyEvaluationForm')} // Navigate to the Faculty Supervisor Evaluation Form

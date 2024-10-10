@@ -45,7 +45,7 @@ const RecommendationLetterApplicationForm: React.FC = () => {
       transcriptFile,
     };
     console.log('Application data:', applicationData);
-    router.push('GetData/GetRecommendationLetter');
+    router.push('/GetData/GetRecommendationLetter');
   };
 
   return (
