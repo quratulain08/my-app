@@ -1,27 +1,47 @@
 "use client";
 import React, { useState } from 'react';
-import { HiDocumentReport, HiViewList, HiChartBar, HiCog, HiLogout, HiMenu, HiX, HiEye } from 'react-icons/hi';
-import { useRouter } from 'next/navigation';
+import { HiDocumentReport, HiViewList, HiChartBar, HiEye, HiLogout, HiMenu, HiX } from 'react-icons/hi';
 import Layout from '../components/Layout';
 
-const DICSidebar: React.FC = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false); 
-  const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(true);
+// Import the components that were previously pages
+import GetProjectIntentionByFaculty from '../components/GetData/GetProjectIntentionByFaculty';
+import GetPostedInternship from '../components/GetData/GetPostedInternship';
+import GetStudentInternshipApproval from '../components/GetData/GetStudentInternshipApproval';
+import GetFacultyEvaluationForm from '../components/GetData/GetFacultyEvaluationForm';
 
-  const router = useRouter();
+const DICSidebar: React.FC = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  const [activeComponent, setActiveComponent] = useState<string>(''); // Track the active component
+  const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(true);
 
   const handleLogout = () => {
     console.log('Logging out...');
-    router.push('/');
+    // Handle logout logic
   };
 
-  const handleNavigation = (path: string) => {
-    setShowWelcomeMessage(false);
-    router.push(path);
+  const handleNavigation = (componentName: string) => {
+    setShowWelcomeMessage(false); // Hide welcome message
+    setActiveComponent(componentName); // Set the active component
+  };
+
+  // Conditionally render the selected component
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case 'GetProjectIntentionByFaculty':
+        return <GetProjectIntentionByFaculty />;
+      case 'GetPostedInternship':
+        return <GetPostedInternship />;
+      case 'GetStudentInternshipApproval':
+        return <GetStudentInternshipApproval />;
+      case 'GetFacultyEvaluationForm':
+        return <GetFacultyEvaluationForm />;
+      default:
+        return null; // Show nothing if no component is selected
+    }
   };
 
   return (
-    <Layout>
+  
       <div className="flex h-screen">
         {/* Sidebar */}
         <div
@@ -33,7 +53,7 @@ const DICSidebar: React.FC = () => {
           <ul className="space-y-2">
             <li>
               <button
-                onClick={() => handleNavigation('/GetData/GetProjectIntentionByFaculty')} // Navigate to the page
+                onClick={() => handleNavigation('GetProjectIntentionByFaculty')} 
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiDocumentReport className="mr-3 text-xl" />
@@ -42,7 +62,7 @@ const DICSidebar: React.FC = () => {
             </li>
             <li>
               <button
-                onClick={() => handleNavigation('/GetData/GetPostedInternship')} 
+                onClick={() => handleNavigation('GetPostedInternship')} 
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiViewList className="mr-3 text-xl" />
@@ -51,18 +71,16 @@ const DICSidebar: React.FC = () => {
             </li>
             <li>
               <button
-                onClick={() => handleNavigation('/GetData/GetStudentInternshipApproval')} 
+                onClick={() => handleNavigation('GetStudentInternshipApproval')} 
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiChartBar className="mr-3 text-xl" />
                 <span>Share Consolidated Report</span>
               </button>
             </li>
-        
-          
             <li>
               <button
-                onClick={() => handleNavigation('/GetData/GetFacultyEvaluationForm')} // Navigate to the Faculty Supervisor Evaluation Form
+                onClick={() => handleNavigation('GetFacultyEvaluationForm')} 
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiEye className="mr-3 text-xl" />
@@ -100,10 +118,11 @@ const DICSidebar: React.FC = () => {
               </div>
             </div>
           )}
-          {/* Other content */}
+          {/* Render the selected component */}
+          {!showWelcomeMessage && renderComponent()}
         </div>
       </div>
-    </Layout>
+    
   );
 };
 

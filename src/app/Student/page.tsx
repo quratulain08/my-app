@@ -1,28 +1,32 @@
 "use client";
 import React, { useState } from 'react';
 import { HiPlus, HiViewList, HiDocumentReport, HiEye, HiLogout, HiMenu, HiX, HiChat, HiMail } from 'react-icons/hi';
-import { useRouter } from 'next/navigation'; 
 import Layout from '../components/Layout'; // Ensure the Layout component is imported
 import EligiblityCriteria from '../components/EligiblityCriteria';
+import GetPostedInternship from '../components/GetData/GetPostedInternship';
+import StudentInternshipApprovalForm from '../components/Forms/StudentInternshipApprovalForm';
+import ApplicationForRecommendationLetter from '../components/Forms/ApplicationForRecommendationLetter';
+import StudentInternshipProgressForm from '../components/Forms/StudentInternshipProgessForm';
+import StudentInternshipActivityLog from '../components/Forms/StudentInternshipActivityLog';
+
 
 const StudentSidebar: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false); 
+  const [activeComponent, setActiveComponent] = useState<JSX.Element | null>(null); // State for the active component
   const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(true);
-
-  const router = useRouter();
 
   const handleLogout = () => {
     console.log('Logging out...');
-    router.push('/');
+    setActiveComponent(null); // Clear the active component on logout
   };
 
-  const handleNavigation = (path: string) => {
-    setShowWelcomeMessage(false);
-    router.push(path);
+  const handleNavigation = (component: JSX.Element) => {
+    setShowWelcomeMessage(false); // Hide welcome message when a component is active
+    setActiveComponent(component); // Set the selected component to be rendered
   };
 
   return (
-    <Layout>
+    
       <div className="flex h-screen">
         {/* Sidebar */}
         <div
@@ -34,16 +38,16 @@ const StudentSidebar: React.FC = () => {
           <ul className="space-y-2">
             <li>
               <button
-                onClick={() => handleNavigation('/GetData/GetPostedInternship')}
+                onClick={() => handleNavigation(<GetPostedInternship />)} // Render the GetPostedInternship component
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiEye className="mr-3 text-xl" />
                 <span>View Posted Internships</span>
               </button>
-            </li> 
+            </li>
             <li>
               <button
-                onClick={() => handleNavigation('/Forms/StudentInternshipApprovalForm')}
+                onClick={() => handleNavigation(<StudentInternshipApprovalForm />)} // Render the StudentInternshipApprovalForm component
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiPlus className="mr-3 text-xl" />
@@ -51,18 +55,17 @@ const StudentSidebar: React.FC = () => {
               </button>
             </li>
             <li>
-  <button
-    onClick={() => handleNavigation('/Forms/ApplicationForRecommendationLetter')}
-    className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
-  >
-    <HiMail className="mr-3 text-xl" />
-    <span>Application for Recommendation Letter</span>
-  </button>
-</li>
-
+              <button
+                onClick={() => handleNavigation(<ApplicationForRecommendationLetter />)} // Render the ApplicationForRecommendationLetter component
+                className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
+              >
+                <HiMail className="mr-3 text-xl" />
+                <span>Application for Recommendation Letter</span>
+              </button>
+            </li>
             <li>
               <button
-                onClick={() => handleNavigation('/Forms/StudentInternshipProgressForm')}
+                onClick={() => handleNavigation(<StudentInternshipProgressForm />)} // Render the StudentInternshipProgressForm component
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiDocumentReport className="mr-3 text-xl" />
@@ -71,7 +74,7 @@ const StudentSidebar: React.FC = () => {
             </li>
             <li>
               <button
-                onClick={() => handleNavigation('/Forms/StudentInternshipActivityLog')}
+                onClick={() => handleNavigation(<StudentInternshipActivityLog />)} // Render the StudentInternshipActivityLog component
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiViewList className="mr-3 text-xl" />
@@ -80,7 +83,7 @@ const StudentSidebar: React.FC = () => {
             </li>
             <li>
               <button
-                onClick={() => handleNavigation('/chat')}
+                onClick={() => handleNavigation(<div>Chat</div>)} 
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiChat className="mr-3 text-xl" />
@@ -109,19 +112,20 @@ const StudentSidebar: React.FC = () => {
 
         {/* Main Content */}
         <div className={`flex-1 p-4 transition-transform ${isSidebarOpen ? 'ml-64' : 'ml-0'} md:ml-64`}>
-          {showWelcomeMessage && (
+          {showWelcomeMessage ? (
             <div className="flex justify-center items-center h-full">
               <div className="p-4 w-full max-w-4xl text-center text-xl text-[#112d60]">
                 <h1 className="font-serif">Welcome to the Student Portal</h1>
                 <p>Select an option from the sidebar to get started.</p>
-                <EligiblityCriteria/>
+                <EligiblityCriteria />
               </div>
             </div>
+          ) : (
+            <div>{activeComponent}</div> // Render the active component
           )}
-          {/* Other content */}
         </div>
       </div>
-    </Layout>
+
   );
 };
 

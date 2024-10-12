@@ -1,39 +1,40 @@
 "use client";
 import React, { useState } from 'react';
 import { HiDocumentReport, HiViewList, HiChartBar, HiLogout, HiMenu, HiX } from 'react-icons/hi';
-import { useRouter } from 'next/navigation';
-import Layout from '../components/Layout'; // Ensure the Layout component is imported
+import Layout from '../components/Layout';
+//import ViewAllStudents from '../components/ViewAllStudents'; // Import ViewAllStudents component
+import PostInternship from '../components/Forms/PostInternship'; // Import PostInternship component
+//import StudentsProgress from '../components/StudentsProgress'; // Import StudentsProgress component
 
 const OrganizationSidebar: React.FC = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false); 
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  const [activeComponent, setActiveComponent] = useState<string>(''); // Keep track of active component
   const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(true);
-
-  const router = useRouter();
 
   const handleLogout = () => {
     console.log('Logging out...');
-    router.push('/');
+    // Logic to handle logout
   };
 
-  const handleNavigation = (path: string) => {
-    setShowWelcomeMessage(false);
-    router.push(path);
+  const handleNavigation = (component: string) => {
+    setActiveComponent(component); // Update active component
+    setShowWelcomeMessage(false); // Hide welcome message
   };
 
   return (
-    <Layout>
+
       <div className="flex h-screen">
         {/* Sidebar */}
         <div
           className={`fixed top-0 left-0 w-64 h-full bg-[#112d60] text-white p-4 transition-transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
         >
-          <div className="flex flex-col items-start mt-12 mb-6"> {/* Adjusted margin-top */}
+          <div className="flex flex-col items-start mt-12 mb-6">
             <div className="text-2xl font-bold text-white">Organization</div>
           </div>
           <ul className="space-y-2">
             <li>
               <button
-                onClick={() => handleNavigation('/ViewAllStudents')} // Navigate to View All Students
+                onClick={() => handleNavigation('ViewAllStudents')}
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiViewList className="mr-3 text-xl" />
@@ -42,7 +43,7 @@ const OrganizationSidebar: React.FC = () => {
             </li>
             <li>
               <button
-                onClick={() => handleNavigation('/Forms/PostInternship')} // Navigate to Post an Internship
+                onClick={() => handleNavigation('PostInternship')}
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiDocumentReport className="mr-3 text-xl" />
@@ -51,7 +52,7 @@ const OrganizationSidebar: React.FC = () => {
             </li>
             <li>
               <button
-                onClick={() => handleNavigation('/StudentsProgress')} // Navigate to Students Progress
+                onClick={() => handleNavigation('StudentsProgress')}
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiChartBar className="mr-3 text-xl" />
@@ -89,10 +90,13 @@ const OrganizationSidebar: React.FC = () => {
               </div>
             </div>
           )}
-          {/* Other content */}
+          {/* Conditionally render the selected component */}
+       {/* {activeComponent === 'ViewAllStudents' && <ViewAllStudents />}  */}  
+          {activeComponent === 'PostInternship' && <PostInternship />}
+        {/*  {activeComponent === 'StudentsProgress' && <StudentsProgress />}*/} 
         </div>
       </div>
-    </Layout>
+   
   );
 };
 

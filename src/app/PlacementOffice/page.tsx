@@ -1,26 +1,42 @@
 "use client";
 import React, { useState } from 'react';
 import { HiPlus, HiViewList, HiDocumentReport, HiMenu, HiX } from 'react-icons/hi';
-import { useRouter } from 'next/navigation';
+import PostInternship from '../components/Forms/PostInternship'; // Adjust the import path if necessary
+import GetPostedInternship from '../components/GetData/GetPostedInternship'; // Adjust the import path if necessary
+import GetStudentInternshipApproval from '../components/GetData/GetStudentInternshipApproval'; // Adjust the import path if necessary
 import Layout from '../components/Layout';
 
 const AUPPlacementSidebar: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  const [activeComponent, setActiveComponent] = useState<string>(''); // State to manage the active component
   const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(true);
 
-  const router = useRouter();
-
-  const handleNavigation = (path: string) => {
+  const handleNavigation = (component: string) => {
     setShowWelcomeMessage(false);
-    router.push(path);
+    setActiveComponent(component); // Set the active component based on the button clicked
+  };
+
+  const renderActiveComponent = () => {
+    switch (activeComponent) {
+      case 'PostInternship':
+        return <PostInternship />;
+      case 'GetPostedInternship':
+        return <GetPostedInternship />;
+      case 'GetStudentInternshipApproval':
+        return <GetStudentInternshipApproval />;
+      default:
+        return null; // Default to null if no component is selected
+    }
   };
 
   return (
-    <Layout>
+
       <div className="flex h-screen">
         {/* Sidebar */}
         <div
-          className={`fixed top-0 left-0 w-64 h-full bg-[#112d60] text-white p-4 transition-transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
+          className={`fixed top-0 left-0 w-64 h-full bg-[#112d60] text-white p-4 transition-transform ${
+            isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+          } md:translate-x-0`}
         >
           <div className="flex flex-col items-start mt-12 mb-6"> {/* Adjusted margin-top */}
             <div className="text-2xl font-bold text-white">AU Placement Office</div>
@@ -28,7 +44,7 @@ const AUPPlacementSidebar: React.FC = () => {
           <ul className="space-y-2">
             <li>
               <button
-                onClick={() => handleNavigation('/Forms/PostInternship')}
+                onClick={() => handleNavigation('PostInternship')}
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiPlus className="mr-3 text-xl" />
@@ -37,7 +53,7 @@ const AUPPlacementSidebar: React.FC = () => {
             </li>
             <li>
               <button
-                onClick={() => handleNavigation('/GetData/GetPostedInternship')}
+                onClick={() => handleNavigation('GetPostedInternship')}
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiViewList className="mr-3 text-xl" />
@@ -46,7 +62,7 @@ const AUPPlacementSidebar: React.FC = () => {
             </li>
             <li>
               <button
-                onClick={() => handleNavigation('/GetData/GetStudentInternshipApproval')}
+                onClick={() => handleNavigation('GetStudentInternshipApproval')}
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiDocumentReport className="mr-3 text-xl" />
@@ -71,14 +87,15 @@ const AUPPlacementSidebar: React.FC = () => {
               <div className="p-4 w-full max-w-4xl text-center text-xl text-[#112d60]">
                 <h1 className="font-serif">Welcome to the AU Placement Office</h1>
                 <p>Select an option from the sidebar to get started.</p>
-                {/* Add any additional content or components here if needed */}
               </div>
             </div>
           )}
-          {/* Other content */}
+          
+          {/* Render the active component based on selection */}
+          {!showWelcomeMessage && renderActiveComponent()}
         </div>
       </div>
-    </Layout>
+   
   );
 };
 

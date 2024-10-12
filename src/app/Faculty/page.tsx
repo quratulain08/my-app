@@ -3,10 +3,16 @@ import React, { useState } from 'react';
 import { HiPlus, HiViewList, HiDocumentReport, HiEye, HiStar, HiChat, HiLogout, HiMenu, HiX } from 'react-icons/hi';
 import { useRouter } from 'next/navigation'; 
 import Layout from '../components/Layout'; // Ensure the Layout component is imported
+import ProjectIntentionForm from '../components/Forms/ProjectIntentionForm'; // Import the component
+import FacultySupervisorEvaluationForm from '../components/Forms/FacultySupervisorEvaluationForm';
+import GetStudentInternshipProgress from '../components/GetData/GetStudentInternshipProgress';
+import GetInternshipActivityLog from '../GetData/GetInternshipActivityLog/page';
+import GetSiteSupervisorEvaluationForm from '../components/GetData/GetSiteSupervisorEvaluationForm';
 
 const Sidebar: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false); // Sidebar starts closed on small screens
   const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(true);
+  const [activeComponent, setActiveComponent] = useState<JSX.Element | null>(null); // State to handle active component
 
   const router = useRouter();
 
@@ -17,13 +23,13 @@ const Sidebar: React.FC = () => {
   };
 
   // Function to handle navigation
-  const handleNavigation = (path: string) => {
+  const handleNavigation = (component: JSX.Element) => {
     setShowWelcomeMessage(false);
-    router.push(path);
+    setActiveComponent(component);
   };
 
   return (
-    <Layout>
+    
       <div className="flex h-screen">
         {/* Sidebar */}
         <div
@@ -35,7 +41,7 @@ const Sidebar: React.FC = () => {
           <ul className="space-y-2">
             <li>
               <button
-                onClick={() => handleNavigation('/Forms/ProjectIntentionForm')} 
+                onClick={() => handleNavigation(<ProjectIntentionForm />)} // Render the ProjectIntentionForm component
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiPlus className="mr-3 text-xl" />
@@ -44,7 +50,7 @@ const Sidebar: React.FC = () => {
             </li>
             <li>
               <button
-                onClick={() => handleNavigation('/GetData/GetStudentInternshipProgress')}
+                onClick={() => handleNavigation(<GetStudentInternshipProgress/>)} // Replace with actual component
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiDocumentReport className="mr-3 text-xl" />
@@ -53,7 +59,7 @@ const Sidebar: React.FC = () => {
             </li>
             <li>
               <button
-                onClick={() => handleNavigation('/GetData/GetInternshipActivityLog')}
+                onClick={() => handleNavigation(<GetInternshipActivityLog/>)} // Replace with actual component
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiViewList className="mr-3 text-xl" />
@@ -61,17 +67,18 @@ const Sidebar: React.FC = () => {
               </button>
             </li>
             <li>
-              <button
-                onClick={() => handleNavigation('/Forms/FacultySupervisorEvaluationForm')}
-                className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
-              >
-                <HiStar className="mr-3 text-xl" />
-                <span>Evaluate Students</span>
-              </button>
-            </li>
+  <button
+    onClick={() => handleNavigation(<FacultySupervisorEvaluationForm />)} // Pass the component as JSX element
+    className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
+  >
+    <HiStar className="mr-3 text-xl" />
+    <span>Evaluate Students</span>
+  </button>
+</li>
+
             <li>
               <button
-                onClick={() => handleNavigation('/GetData/GetSiteSupervisorEvaluationForm')}
+                onClick={() => handleNavigation(<GetSiteSupervisorEvaluationForm/>)} // Replace with actual component
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiEye className="mr-3 text-xl" />
@@ -80,7 +87,7 @@ const Sidebar: React.FC = () => {
             </li>
             <li>
               <button
-                onClick={() => handleNavigation('/chat/Facultychat')}
+                onClick={() => handleNavigation(<div>Chat Component</div>)} // Replace with actual component
                 className="flex items-center p-2 rounded hover:bg-blue-900 w-full text-left"
               >
                 <HiChat className="mr-3 text-xl" />
@@ -110,18 +117,19 @@ const Sidebar: React.FC = () => {
 
         {/* Main Content */}
         <div className={`flex-1 p-4 transition-transform ${isSidebarOpen ? 'ml-64' : 'ml-0'} md:ml-64`}>
-          {showWelcomeMessage && (
+          {showWelcomeMessage ? (
             <div className="flex justify-center items-center h-full ">
               <div className="p-4 w-full max-w-4xl text-center text-xl text-[#112d60]">
                 <h1 className="font-serif">Welcome to the Faculty Portal</h1>
                 <p>Select an option from the sidebar to get started.</p>
               </div>
             </div>
+          ) : (
+            <div>{activeComponent}</div>
           )}
-          {/* Other content */}
         </div>
       </div>
-    </Layout>
+  
   );
 };
 
