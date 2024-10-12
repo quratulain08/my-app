@@ -6,7 +6,7 @@ import Layout from '../components/Layout'; // Ensure the Layout component is imp
 import ProjectIntentionForm from '../components/Forms/ProjectIntentionForm'; // Import the component
 import FacultySupervisorEvaluationForm from '../components/Forms/FacultySupervisorEvaluationForm';
 import GetStudentInternshipProgress from '../components/GetData/GetStudentInternshipProgress';
-import GetInternshipActivityLog from '../GetData/GetInternshipActivityLog/page';
+import GetInternshipActivityLog from '../components/GetData/GetInternshipActivityLog';
 import GetSiteSupervisorEvaluationForm from '../components/GetData/GetSiteSupervisorEvaluationForm';
 
 const Sidebar: React.FC = () => {
