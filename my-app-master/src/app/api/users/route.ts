@@ -44,9 +44,13 @@ export async function POST(req: Request) {
     await newUser.save();
 
     return NextResponse.json({ message: 'User registered successfully! Awaiting approval.' });
-  } catch (error) {
-    console.error('Error registering user:', error); // Log the error for detailed debugging
-    return NextResponse.json({ error: `Failed to register user: ${error.message}` }, { status: 500 });
+  } catch (error: unknown) { // Specify the error as unknown
+    if (error instanceof Error) {
+      console.error('Error registering user:', error); // Log the error for detailed debugging
+      return NextResponse.json({ error: `Failed to register user: ${error.message}` }, { status: 500 });
+    } else {
+      console.error('Unexpected error:', error);
+      return NextResponse.json({ error: 'Failed to register user: Unknown error occurred' }, { status: 500 });
+    }
   }
 }
-

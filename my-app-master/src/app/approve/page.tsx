@@ -49,7 +49,7 @@ const ApproveSignup = () => {
 
   const handleApprove = async (email: string) => {
     try {
-      const response = await fetch('/api/user/approve', {
+      const response = await fetch('/api/users/approve', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, role }),

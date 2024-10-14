@@ -19,6 +19,7 @@ export async function POST(req: Request) {
       'site-supervisor',
       'au-placement',
       'dic',
+      'Organization'
     ];
 
     // Validate role (if provided)
