@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/mongodb';
-import User from '@/models/User';
+import Users from '@/models/User';
 
 // POST: Approve user by email and assign role (Superadmin action).
 export async function POST(req: Request) {
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     await connectToDatabase();
 
     // Find user by email
-    const user = await User.findOne({ email });
+    const user = await Users.findOne({ email });
 
     if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
