@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { HiPlus, HiViewList, HiDocumentReport, HiEye, HiLogout, HiMenu, HiX, HiChat, HiMail } from 'react-icons/hi';
 import Layout from '../components/Layout'; // Ensure the Layout component is imported
-import EligiblityCriteria from '../components/EligiblityCriteria';
+import GetStudentProfile from '../components/Profile/GetStudentProfile'
 import GetPostedInternship from '../components/GetData/GetPostedInternship';
 import StudentInternshipApprovalForm from '../components/Forms/StudentInternshipApprovalForm';
 import ApplicationForRecommendationLetter from '../components/Forms/ApplicationForRecommendationLetter';
@@ -115,9 +115,8 @@ const StudentSidebar: React.FC = () => {
           {showWelcomeMessage ? (
             <div className="flex justify-center items-center h-full">
               <div className="p-4 w-full max-w-4xl text-center text-xl text-[#112d60]">
-                <h1 className="font-serif">Welcome to the Student Portal</h1>
-                <p>Select an option from the sidebar to get started.</p>
-                <EligiblityCriteria />
+                
+                <GetStudentProfile/>
               </div>
             </div>
           ) : (
