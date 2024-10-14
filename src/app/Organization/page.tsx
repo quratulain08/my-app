@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import { HiDocumentReport, HiViewList, HiChartBar, HiLogout, HiMenu, HiX } from 'react-icons/hi';
 import Layout from '../components/Layout';
-//import ViewAllStudents from '../components/ViewAllStudents'; // Import ViewAllStudents component
-import PostInternship from '../components/Forms/PostInternship'; // Import PostInternship component
-//import StudentsProgress from '../components/StudentsProgress'; // Import StudentsProgress component
+//import ViewAllStudents from '../components/ViewAllStudents'; 
+import PostInternship from '../components/Forms/PostInternship'; 
+//import StudentsProgress from '../components/StudentsProgress'; 
 
 const OrganizationSidebar: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
